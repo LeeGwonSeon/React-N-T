@@ -19,13 +19,13 @@ export function getSortedPostsData() {
 
     return {
       id,
-      ...allPostsData(matterResult.data as { date: string; title: string}),
+      ...(matterResult.data as { date: string; title: string }),
     };
   });
 
   //Sorting
   return allPostsData.sort((a, b) => {
-    if (a.data > b.data) {
+    if (a.date > b.date) {
       return 1;
     } else {
       return -1;
