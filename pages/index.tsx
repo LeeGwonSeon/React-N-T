@@ -4,6 +4,7 @@ import { Inter } from "@next/font/google";
 import homeStyles from "../styles/Home.module.css";
 import { GetStaticProps, NextPage } from "next";
 import { getSortedPostsData } from "../lib/post";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ const Home = ({
   }[];
 }) => {
   return (
-    <>
+    <div className={homeStyles.container}>
       <Head>
         <title>Logan Lee</title>
       </Head>
@@ -30,14 +31,14 @@ const Home = ({
         <ul className={homeStyles.list}>
           {allPropsData.map(({ id, title, date }) => (
             <li className={homeStyles.listItem} key={id}>
-              <a>{title}</a>
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               <small className={homeStyles.lightText}>{date}</small>
             </li>
           ))}
         </ul>
       </section>
-    </>
+    </div>
   );
 };
 export default Home;
